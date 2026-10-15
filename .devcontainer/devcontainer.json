@@ -2,7 +2,7 @@
   // Instruction and infos for devcontainers are available under https://containers.dev/
   "name": "DevContainer Base",
   "build": {
-    "context": "../../", // make the project root the build context, since we need access to the certificates etc
+    "context": "../", // make the project root the build context, since we need access to the certificates etc
     "dockerfile": "Dockerfile" // use the Dockerfile in the .devcontainer folder
   },
   // https://containers.dev/features
