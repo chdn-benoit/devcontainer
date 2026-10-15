@@ -18,3 +18,8 @@ alias mst="minikube status"
 
 eval "$(atuin init zsh)"
 eval "$(zoxide init zsh)"
+
+# Source custom profile if it exists
+if [ -f "$HOME/.zprofile.custom" ]; then
+    source "$HOME/.zprofile.custom"
+fi
