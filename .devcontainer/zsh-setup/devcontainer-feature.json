@@ -1,0 +1,10 @@
+{
+  "id": "zsh-setup",
+  "version": "1.0.0",
+  "name": "ZSH Setup",
+  "description": "Configures Zsh with custom .zshrc, .zprofile",
+  "dependsOn": {
+    "ghcr.io/devcontainers/features/common-utils:2": {}
+  },
+  "installsAfter": ["ghcr.io/devcontainers/features/common-utils:2"]
+}

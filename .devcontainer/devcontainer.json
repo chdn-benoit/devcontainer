@@ -1,0 +1,39 @@
+{
+  // Instruction and infos for devcontainers are available under https://containers.dev/
+  "name": "DevContainer Base",
+  "build": {
+    "context": "../../", // make the project root the build context, since we need access to the certificates etc
+    "dockerfile": "Dockerfile" // use the Dockerfile in the .devcontainer folder
+  },
+  // https://containers.dev/features
+  "features": {
+    // install zsh, oh my zsh via common-utils feature
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "configureZshAsDefaultShell": true,
+      "installOhMyZsh": true,
+      "installOhMyZshConfig": true,
+      "upgradePackages": true
+    },
+    // install nushell (alternative to zsh, useful for a better shell experience)
+    "ghcr.io/eitsupi/devcontainer-features/nushell:0.1.1": {},
+    // install docker in docker (for containerized development)
+    "ghcr.io/devcontainers/features/docker-in-docker:2.16.1": {},
+    // install kubectl, helm, minikube (for kubernetes development)
+    "ghcr.io/devcontainers/features/kubectl-helm-minikube:1.3.1": {},
+    // install bun (easier to use than node)
+    "ghcr.io/devcontainer-community/devcontainer-features/bun.sh:1.0.2": {},
+     // Node.js (via nvm), yarn and pnpm.
+     "ghcr.io/devcontainers/features/node:2": {},
+     // install Dotnet CLI
+     "ghcr.io/devcontainers/features/dotnet:2": {},
+     // install .NET CSSharpier
+     "ghcr.io/nikiforovall/devcontainer-features/dotnet-csharpier:1": {},
+    // install zoxide (for a better shell experience)
+    "ghcr.io/jsburckhardt/devcontainer-features/zoxide:1": {},
+    // install atuin (for a better shell experience)
+    "ghcr.io/devcontainer-community/devcontainer-features/atuin.sh:1": {},
+    // install zsh-setup (sets up .zshrc, zprofile)
+    "./zsh-setup": {}
+  }
+}
