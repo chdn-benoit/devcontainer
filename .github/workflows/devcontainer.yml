@@ -9,6 +9,7 @@ on:
 
 permissions:
   contents: read
+  packages: write
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -23,8 +24,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Login to GitHub Container Registry
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Build dev container
         uses: devcontainers/ci@v0.3
         with:
-          push: never
+          imageName: ghcr.io/chdn-benoit/devcontainer
+          imageTag: latest
+          cacheFrom: ${{ github.event_name != 'pull_request' && 'ghcr.io/chdn-benoit/devcontainer' || '' }}
+          push: filter
+          refFilterForPush: refs/heads/main
+          eventFilterForPush: |
+            push
+            workflow_dispatch
           runCmd: echo "Dev container built and started"
