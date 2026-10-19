@@ -32,3 +32,7 @@ export PATH="$PATH:$HOME/.local/bin/"
 # load zprofile
 source $HOME/.zprofile
 
+# Source custom profile if it exists
+if [ -f "$HOME/.zprofile.custom" ]; then
+    source "$HOME/.zprofile.custom"
+fi
